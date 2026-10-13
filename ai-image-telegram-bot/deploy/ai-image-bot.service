@@ -1,0 +1,20 @@
+[Unit]
+Description=Private Telegram OpenAI Image Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aiimagebot
+WorkingDirectory=/opt/ai-image-bot
+EnvironmentFile=/opt/ai-image-bot/.env
+ExecStart=/usr/bin/node /opt/ai-image-bot/src/index.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
